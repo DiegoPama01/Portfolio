@@ -1,0 +1,28 @@
+<section class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+  <div class="flex flex-col gap-10">
+    <div class="flex flex-col gap-2 items-center lg:items-start">
+      <h4 class="text-primary text-sm font-bold uppercase tracking-widest">Tech Stack</h4>
+      <p class="text-slate-900 dark:text-white text-2xl font-bold">Tools of my trade</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      @for (t of tech; track t.label) {
+      <div
+        class="tech-card flex flex-1 gap-4 rounded-xl border border-slate-200 dark:border-[#325567] bg-white dark:bg-[#192b33] p-5 items-center transition-all hover:border-primary/50 group"
+        tabindex="0"
+      >
+        <span
+          class="tech-icon"
+          [attr.aria-label]="t.label"
+          [style.--icon-url]="'url(' + t.icon + ')'"
+          [style.--icon-color]="t.color"
+        ></span>
+
+        <h2 class="text-slate-900 dark:text-white text-base font-bold">
+          {{ t.label }}
+        </h2>
+      </div>
+      }
+    </div>
+  </div>
+</section>

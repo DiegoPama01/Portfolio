@@ -12,9 +12,9 @@ type NavLink = { label: string; path: string };
 })
 export class Navbar {
   links: NavLink[] = [
+        { label: 'Home', path: '/' },
     { label: 'Projects', path: '/projects' },
     { label: 'About', path: '/about' },
-    { label: 'Tech Stack', path: '/tech' }, // si luego decides que sea page
     { label: 'Contact', path: '/contact' },
   ];
 }

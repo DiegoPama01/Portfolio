@@ -1,0 +1,26 @@
+.tech-card {
+  outline: none;
+}
+
+.tech-icon {
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  background-color: #94a3b8;
+  mask-image: var(--icon-url);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-image: var(--icon-url);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.tech-card:hover .tech-icon,
+.tech-card:focus-visible .tech-icon,
+.tech-card:focus-within .tech-icon {
+  background-color: var(--icon-color);
+  transform: translateY(-1px);
+}
