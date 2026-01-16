@@ -4,13 +4,10 @@
       {{ kicker }}
     </span>
 
-    <!-- Slot: aquí va tu H1 EXACTO -->
     <ng-content select="[hero-title]"></ng-content>
   </div>
 
-  <!-- Slot: aquí va tu bloque de párrafos EXACTO -->
   <ng-content select="[hero-body]"></ng-content>
 
-  <!-- Slot: tus badges (puede ir como otro slot o como input, tú eliges) -->
   <ng-content select="[hero-badges]"></ng-content>
 </div>
