@@ -1,6 +1,8 @@
 <section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24">
   <div class="mb-16 lg:mb-20">
-    <h1 class="text-slate-900 dark:text-white text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+    <h1
+      class="text-slate-900 dark:text-white text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight"
+    >
       Let's build
       <span class="block text-primary">something together.</span>
     </h1>
@@ -12,21 +14,57 @@
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
     <div class="lg:col-span-8">
-      <form class="space-y-8">
+      <form class="space-y-8" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="flex flex-col gap-3">
             <label class="contact-label">Full name</label>
-            <input class="contact-input" placeholder="Your name" type="text" />
+            <input
+              class="contact-input"
+              placeholder="Your name"
+              type="text"
+              autocomplete="name"
+              formControlName="fullName"
+            />
+            <p
+              *ngIf="contactForm.get('fullName')?.touched && contactForm.get('fullName')?.invalid"
+              class="text-sm text-red-500"
+            >
+              Please enter your full name.
+            </p>
           </div>
+
           <div class="flex flex-col gap-3">
-            <label class="contact-label">Email address</label>
-            <input class="contact-input" placeholder="you@email.com" type="email" />
+            <label class="contact-label">Email</label>
+            <input
+              class="contact-input"
+              placeholder="you@email.com"
+              type="email"
+              autocomplete="email"
+              formControlName="email"
+            />
+            <p
+              *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid"
+              class="text-sm text-red-500"
+            >
+              Please enter a valid email.
+            </p>
           </div>
         </div>
 
         <div class="flex flex-col gap-3">
           <label class="contact-label">Subject</label>
-          <input class="contact-input" placeholder="Project inquiry" type="text" />
+          <input
+            class="contact-input"
+            placeholder="Project inquiry"
+            type="text"
+            formControlName="subject"
+          />
+          <p
+            *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.invalid"
+            class="text-sm text-red-500"
+          >
+            Please add a subject.
+          </p>
         </div>
 
         <div class="flex flex-col gap-3">
@@ -35,16 +73,33 @@
             class="contact-input contact-textarea"
             placeholder="Tell me about your goals..."
             rows="6"
+            formControlName="message"
           ></textarea>
+          <p
+            *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid"
+            class="text-sm text-red-500"
+          >
+            Please share a few details about the project.
+          </p>
         </div>
+
+        <p *ngIf="submitError" class="text-sm text-red-500">
+          {{ submitError }}
+        </p>
+        <p *ngIf="submitSuccess" class="text-sm text-emerald-600">
+          {{ submitSuccess }}
+        </p>
 
         <div class="pt-2">
           <button
-            class="group inline-flex items-center gap-3 bg-primary text-white dark:text-background-dark px-6 py-3 rounded-lg font-bold transition-all hover:brightness-110"
+            class="group inline-flex items-center gap-3 bg-primary text-white dark:text-background-dark px-6 py-3 rounded-lg font-bold transition-all hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed"
             type="submit"
+            [disabled]="isSubmitting"
           >
-            Send message
-            <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">
+            {{ isSubmitting ? 'Sending...' : 'Send message' }}
+            <span
+              class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform"
+            >
               arrow_forward
             </span>
           </button>
@@ -65,7 +120,7 @@
             </div>
             <div class="flex flex-col">
               <span class="contact-link-label">Email me</span>
-              <span class="text-base">hello@yourdomain.com</span>
+              <span class="text-base">diego2001pama@gmail.com</span>
             </div>
           </a>
 
@@ -75,7 +130,12 @@
             </div>
             <div class="flex flex-col">
               <span class="contact-link-label">LinkedIn</span>
-              <span class="text-base">your-linkedin</span>
+              <a
+                href="https://www.linkedin.com/in/diego-palacios-martínez-444720254"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Diego Palacios Martínez</a
+              >
             </div>
           </a>
 
@@ -85,7 +145,9 @@
             </div>
             <div class="flex flex-col">
               <span class="contact-link-label">GitHub</span>
-              <span class="text-base">your-github</span>
+              <a href="https://github.com/DiegoPama01" target="_blank" rel="noopener noreferrer"
+                >diego-pama</a
+              >
             </div>
           </a>
         </div>
